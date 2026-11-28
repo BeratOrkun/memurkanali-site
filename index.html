@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="tr" data-tema="oto" data-yazi="normal">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Memur Kanalı – Tüm Kamu İlanları Tek Yerde</title>
+  <meta name="description" content="Kariyer Kapısı, ilan.gov.tr, Kamu İlan, İŞKUR, Yerel Yönetimler ve ÖSYM'deki güncel memur, sözleşmeli personel, işçi ve akademik kamu ilanları tek yerde. Her gün 09:00, 15:00 ve 21:00'de güncellenir.">
+  <meta name="theme-color" content="#2b50e6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a1020" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Memur Kanalı">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Memur Kanalı – Tüm Kamu İlanları Tek Yerde">
+  <meta property="og:description" content="Kariyer Kapısı, ilan.gov.tr, Kamu İlan, İŞKUR, Yerel Yönetimler ve ÖSYM ilanları tek ekranda; her ilan resmi sayfasına bağlanır.">
+  <meta property="og:image" content="https://beratorkun.github.io/memurkanali-site/img/og.png">
+  <meta property="og:url" content="https://beratorkun.github.io/memurkanali-site/">
+  <meta property="og:locale" content="tr_TR">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="Memur Kanalı - Kamu İlanları" href="api/rss.xml">
+  <link rel="stylesheet" href="css/stil.css">
+
+  <script>
+    /* Tema ve yazı boyutu tercihini sayfa çizilmeden uygula (yanıp sönmeyi önler) */
+    (function () {
+      try {
+        var t = localStorage.getItem("mk_tema"), y = localStorage.getItem("mk_yazi");
+        if (t) document.documentElement.setAttribute("data-tema", t);
+        if (y) document.documentElement.setAttribute("data-yazi", y);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="atla" href="#icerik">İçeriğe geç</a>
+
+  <header class="ust">
+    <div class="ust-ic">
+      <a class="marka" href="#/" aria-label="Memur Kanalı ana sayfa">
+        <img src="img/logo.svg" alt="" width="36" height="36">
+        <span><b>Memur</b> Kanalı</span>
+      </a>
+      <nav class="ust-nav" aria-label="Ana menü" id="ustNav"></nav>
+      <div class="ust-aksiyon">
+        <button class="yukle-btn" id="btnYukle" type="button" hidden>
+          <svg class="ikon" viewBox="0 0 24 24"><path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M5 21h14"/></svg>
+          <span>Uygulamayı yükle</span>
+        </button>
+        <button class="ikon-btn yazi-btn" id="btnYazi" type="button" aria-label="Yazı boyutunu değiştir" title="Yazı boyutu">A<small>A</small></button>
+        <button class="ikon-btn" id="btnTema" type="button" aria-label="Koyu / açık tema" title="Tema">
+          <svg class="ikon tema-gunes" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="icerik" class="icerik" tabindex="-1" aria-live="polite">
+    <div class="bos" style="margin-top:24px">
+      <div class="simge">⏳</div>
+      <h3>İlanlar yükleniyor…</h3>
+      <noscript><p>Memur Kanalı'nı kullanmak için tarayıcınızda JavaScript'i açmanız gerekiyor.</p></noscript>
+    </div>
+  </main>
+
+  <nav class="alt-nav" aria-label="Alt menü" id="altNav"></nav>
+
+  <!-- İlan ayrıntısı -->
+  <div class="cekmece" id="cekmece" aria-hidden="true">
+    <div class="arka-perde" data-ac="kapat"></div>
+    <section class="cekmece-panel" role="dialog" aria-modal="true" aria-labelledby="dBaslik" tabindex="-1">
+      <div class="cekmece-ust">
+        <button class="ikon-btn" type="button" data-ac="kapat" aria-label="Kapat">
+          <svg class="ikon" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="baslik">İlan ayrıntısı</span>
+        <span id="cekmeceAraclar" style="display:flex;gap:4px"></span>
+      </div>
+      <div class="cekmece-govde" id="cekmeceGovde"></div>
+      <div class="cekmece-alt" id="cekmeceAlt"></div>
+    </section>
+  </div>
+
+  <div class="arka-perde" id="perde" data-ac="panel-kapat"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="ayarlar.js"></script>
+  <script src="js/ortak.js"></script>
+  <script src="js/uygulama.js" defer></script>
+</body>
+</html>

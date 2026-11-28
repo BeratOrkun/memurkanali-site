@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="tr" data-tema="oto" data-yazi="normal">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Yönetim Paneli – Memur Kanalı</title>
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/stil.css">
+  <script>
+    (function () { try { var t = localStorage.getItem("mk_tema"); if (t) document.documentElement.setAttribute("data-tema", t); } catch (e) {} })();
+  </script>
+  <style>
+    body { padding-bottom: 40px; }
+    .yonetim { max-width: 980px; margin: 0 auto; padding: 18px 16px 40px; }
+    .alan { display: grid; gap: 6px; }
+    .alan > span { font-weight: 700; font-size: .95rem; }
+    .alan small { color: var(--yazi-3); }
+    .alan input[type=text], .alan input[type=url], .alan input[type=password], .alan input[type=date], .alan input[type=number], .alan textarea, .alan select {
+      width: 100%; min-height: 48px; border-radius: 12px; border: 1.5px solid var(--cizgi-2); background: var(--yuzey); padding: 10px 14px; font-size: 1rem;
+    }
+    .alan textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
+    .alan input:focus, .alan textarea:focus, .alan select:focus { outline: none; border-color: var(--ana); box-shadow: 0 0 0 4px color-mix(in srgb, var(--ana) 18%, transparent); }
+    .form { display: grid; gap: 14px; }
+    .form .iki { display: grid; gap: 14px; grid-template-columns: 1fr; }
+    @media (min-width: 720px) { .form .iki { grid-template-columns: 1fr 1fr; } }
+    .onay { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+    .onay input { width: 22px; height: 22px; accent-color: var(--ana); }
+    .kayit { display: flex; gap: 12px; align-items: center; padding: 14px 0; border-top: 1px solid var(--cizgi); }
+    .kayit:first-child { border-top: 0; }
+    .kayit div { flex: 1; min-width: 0; }
+    .kayit small { display: block; color: var(--yazi-3); }
+    .sekme-baslik { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 18px 0 10px; flex-wrap: wrap; }
+    .uyari-kutu { padding: 12px 14px; border-radius: 12px; background: var(--uyari-bg); color: var(--uyari); font-weight: 600; font-size: .92rem; }
+    .durum-satir { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    code { background: var(--gri-bg); padding: 2px 6px; border-radius: 6px; font-size: .9em; }
+  </style>
+</head>
+<body>
+  <header class="ust">
+    <div class="ust-ic">
+      <a class="marka" href="./"><img src="img/logo.svg" alt="" width="36" height="36"><span><b>Yönetim</b> Paneli</span></a>
+      <div class="ust-aksiyon"><a class="btn sade" href="./" style="white-space:nowrap">← Siteye dön</a></div>
+    </div>
+  </header>
+
+  <main class="yonetim">
+    <!-- 1. Bağlantı -->
+    <section class="kutu" id="baglantiKutu">
+      <h2>🔐 GitHub bağlantısı</h2>
+      <p>Elle eklediğiniz duyuru ve ilanlar deponuzdaki <code>veri/manuel.json</code> dosyasında saklanır. Kaydettiğinizde GitHub Actions siteyi 1–2 dakika içinde yeniden yayınlar.</p>
+      <form class="form" id="baglantiFormu" style="margin-top:16px" autocomplete="off">
+        <div class="iki">
+          <label class="alan"><span>Depo</span><input type="text" id="depo" placeholder="kullanici-adi/memurkanali" required><small>GitHub kullanıcı adınız / depo adı</small></label>
+          <label class="alan"><span>Dal (branch)</span><input type="text" id="dal" value="main" required></label>
+        </div>
+        <label class="alan"><span>Erişim anahtarı (token)</span><input type="password" id="token" placeholder="github_pat_…" required>
+          <small>GitHub &gt; Settings &gt; Developer settings &gt; <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">Fine-grained token oluştur</a> · Yalnızca bu depoyu seçin · Permissions &gt; <b>Contents: Read and write</b></small></label>
+        <label class="onay"><input type="checkbox" id="hatirla"> Bu cihazda hatırla (yalnızca kendi cihazınızda işaretleyin)</label>
+        <div class="durum-satir"><button class="btn ana" type="submit">Bağlan</button><span id="baglantiDurum" style="color:var(--yazi-3)"></span></div>
+      </form>
+    </section>
+
+    <!-- 2. Düzenleyici -->
+    <section id="duzenleyici" hidden>
+      <div class="kutu">
+        <div class="durum-satir" style="justify-content:space-between">
+          <div><b id="depoAdi"></b><div style="color:var(--yazi-3);font-size:.9rem" id="sonKayit"></div></div>
+          <div class="durum-satir">
+            <a class="btn sade" id="actionsLink" target="_blank" rel="noopener noreferrer">Yayın durumu ↗</a>
+            <button class="btn" type="button" id="cikis">Çıkış</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bolumlu" role="group" aria-label="Bölüm" style="margin-top:16px">
+        <button type="button" data-sekme="duyurular" aria-pressed="true">📣 Duyurular</button>
+        <button type="button" data-sekme="ilanlar" aria-pressed="false">📝 İlanlar</button>
+      </div>
+
+      <div class="sekme-baslik"><h2 id="sekmeBaslik" style="font-size:1.25rem">Duyurular</h2><button class="btn ana" type="button" id="yeniBtn">+ Yeni ekle</button></div>
+      <div class="kutu" id="liste"></div>
+
+      <div class="kutu" id="formKutu" hidden style="margin-top:16px">
+        <h2 id="formBaslik">Yeni duyuru</h2>
+        <form class="form" id="icerikFormu"></form>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="ayarlar.js"></script>
+  <script src="js/ortak.js"></script>
+  <script src="js/yonetim.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "Memur Kanalı – Kamu İlanları",
+  "short_name": "Memur Kanalı",
+  "description": "Kariyer Kapısı, ilan.gov.tr, Kamu İlan, İŞKUR, Yerel Yönetimler ve ÖSYM'deki güncel kamu ilanları tek yerde.",
+  "lang": "tr",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./?kaynak=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
+  "background_color": "#f3f5fb",
+  "theme_color": "#2b50e6",
+  "categories": ["news", "productivity", "government"],
+  "icons": [
+    { "src": "img/ikon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "img/ikon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "img/ikon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "img/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Son günü yaklaşan ilanlar", "short_name": "Son günler", "url": "./#/?hizli=songun", "icons": [{ "src": "img/ikon-192.png", "sizes": "192x192" }] },
+    { "name": "Sınav takvimi", "short_name": "Takvim", "url": "./#/takvim", "icons": [{ "src": "img/ikon-192.png", "sizes": "192x192" }] },
+    { "name": "Kaydettiğim ilanlar", "short_name": "Kayıtlı", "url": "./#/kayitli", "icons": [{ "src": "img/ikon-192.png", "sizes": "192x192" }] }
+  ]
+}

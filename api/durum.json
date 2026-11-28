@@ -1,0 +1,67 @@
+{
+ "surum": 1,
+ "son_kontrol": "2026-11-28T18:22:46+03:00",
+ "son_degisiklik": "2026-11-28T18:22:46+03:00",
+ "ilan_sayisi": 238,
+ "etkinlik_sayisi": 241,
+ "duyuru_sayisi": 41,
+ "kaynaklar": [
+  {
+   "kod": "kariyerkapisi",
+   "ad": "Kariyer Kapısı",
+   "url": "https://kariyerkapisi.gov.tr/isealim",
+   "durum": "hata",
+   "hata": "HTTPSConnectionPool(host='api.kariyerkapisi.gov.tr', port=443): Max retries exceeded with url: /api/ilan/GetIseAlimPage (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.kariyerkapisi.gov.tr', port=443) at 0x75c943dfd9a0>, 'Connection to api.kariyerkapisi.gov.tr timed out. (connect timeout=1",
+   "son_basari": "2026-11-25T14:43:53+03:00",
+   "adet": 23,
+   "sure_sn": 25.1
+  },
+  {
+   "kod": "ilangovtr",
+   "ad": "ilan.gov.tr",
+   "url": "https://www.ilan.gov.tr/ilan/tum-ilanlar/personel-alimi?ats=5",
+   "durum": "ok",
+   "adet": 115,
+   "son_basari": "2026-11-28T18:22:46+03:00",
+   "sure_sn": 2.9
+  },
+  {
+   "kod": "kamuilan",
+   "ad": "Kamu İlan",
+   "url": "https://kamuilan.sbb.gov.tr/",
+   "durum": "hata",
+   "hata": "403 Client Error: Forbidden for url: https://kamuilan.sbb.gov.tr/",
+   "son_basari": "2026-11-25T14:43:53+03:00",
+   "adet": 86,
+   "sure_sn": 3.1
+  },
+  {
+   "kod": "yerelyonetim",
+   "ad": "Yerel Yönetimler",
+   "url": "https://yerelyonetimler.csb.gov.tr/duyurular",
+   "durum": "hata",
+   "hata": "HTTPSConnectionPool(host='yerelyonetimler.csb.gov.tr', port=443): Max retries exceeded with url: /duyurular (Caused by ConnectTimeoutError(<HTTPSConnection(host='yerelyonetimler.csb.gov.tr', port=443) at 0x75c943cb8800>, 'Connection to yerelyonetimler.csb.gov.tr timed out. (connect timeout=12)'))",
+   "son_basari": "2026-11-25T14:43:53+03:00",
+   "adet": 12,
+   "sure_sn": 25.0
+  },
+  {
+   "kod": "iskur",
+   "ad": "İŞKUR",
+   "url": "https://www.iskur.gov.tr/ilanlar/",
+   "durum": "ok",
+   "adet": 112,
+   "son_basari": "2026-11-28T18:22:46+03:00",
+   "sure_sn": 101.5
+  },
+  {
+   "kod": "osym",
+   "ad": "ÖSYM",
+   "url": "https://www.osym.gov.tr/",
+   "durum": "ok",
+   "adet": 499,
+   "son_basari": "2026-11-28T18:22:46+03:00",
+   "sure_sn": 3.5
+  }
+ ]
+}
